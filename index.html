@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer - DAA Algorithms</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Algorithm Visualizer</h1>
+            <p>Explore Divide & Conquer, Greedy, Dynamic Programming, and Backtracking Algorithms</p>
+            <div class="student-info">
+                <div class="info-item">
+                    <span class="info-label">Subject:</span>
+                    <span class="info-value">Design and Analysis of Algorithm</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Navigation Tabs -->
+            <nav class="tab-navigation">
+                <button class="tab-btn active" data-category="divide-conquer">Divide & Conquer</button>
+                <button class="tab-btn" data-category="string-matching">String Matching</button>
+                <button class="tab-btn" data-category="greedy">Greedy</button>
+                <button class="tab-btn" data-category="dynamic">Dynamic Programming</button>
+                <button class="tab-btn" data-category="backtracking">Backtracking</button>
+                <button class="tab-btn" data-category="branch-bound">Branch & Bound</button>
+            </nav>
+
+            <!-- Divide & Conquer Section -->
+            <section id="divide-conquer" class="tab-content active">
+                <h2>Divide & Conquer Algorithms</h2>
+
+                <!-- Algorithm Selector -->
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="heap-sort">Heap Sort</button>
+                    <button class="algo-btn" data-algo="merge-sort">Merge Sort</button>
+                    <button class="algo-btn" data-algo="quick-sort">Quick Sort</button>
+                    <button class="algo-btn" data-algo="binary-search">Binary Search</button>
+                    <button class="algo-btn" data-algo="strassen">Strassen Matrix Multiply</button>
+                </div>
+
+                <!-- Input Section -->
+                <div class="input-section">
+                    <!-- Heap Sort -->
+                    <div id="heap-sort" class="algo-input active">
+                        <h3>Heap Sort</h3>
+                        <div class="form-group">
+                            <label>Enter array (comma-separated):</label>
+                            <input type="text" id="heapInput" placeholder="e.g., 64,34,25,12,22,11,90"
+                                value="64,34,25,12,22,11,90">
+                            <button class="btn-primary" onclick="solveHeapSort()">Sort</button>
+                        </div>
+                    </div>
+
+                    <!-- Merge Sort -->
+                    <div id="merge-sort" class="algo-input">
+                        <h3>Merge Sort</h3>
+                        <div class="form-group">
+                            <label>Enter array (comma-separated):</label>
+                            <input type="text" id="mergeInput" placeholder="e.g., 64,34,25,12,22,11,90"
+                                value="64,34,25,12,22,11,90">
+                            <button class="btn-primary" onclick="solveMergeSort()">Sort</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Sort -->
+                    <div id="quick-sort" class="algo-input">
+                        <h3>Quick Sort</h3>
+                        <div class="form-group">
+                            <label>Enter array (comma-separated):</label>
+                            <input type="text" id="quickInput" placeholder="e.g., 64,34,25,12,22,11,90"
+                                value="64,34,25,12,22,11,90">
+                            <button class="btn-primary" onclick="solveQuickSort()">Sort</button>
+                        </div>
+                    </div>
+
+                    <!-- Binary Search -->
+                    <div id="binary-search" class="algo-input">
+                        <h3>Binary Search</h3>
+                        <div class="form-group">
+                            <label>Enter sorted array (comma-separated):</label>
+                            <input type="text" id="binaryArray" placeholder="e.g., 10,20,30,40,50,60,70"
+                                value="10,20,30,40,50,60,70">
+                        </div>
+                        <div class="form-group">
+                            <label>Search for element:</label>
+                            <input type="number" id="binaryTarget" placeholder="e.g., 40" value="40">
+                            <button class="btn-primary" onclick="solveBinarySearch()">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Strassen Matrix Multiply -->
+                    <div id="strassen" class="algo-input">
+                        <h3>Strassen Matrix Multiplication</h3>
+                        <div class="form-group">
+                            <label>Matrix A (2x2, row-wise comma-separated):</label>
+                            <input type="text" id="matrixA" placeholder="e.g., 1,2,3,4" value="1,2,3,4">
+                        </div>
+                        <div class="form-group">
+                            <label>Matrix B (2x2, row-wise comma-separated):</label>
+                            <input type="text" id="matrixB" placeholder="e.g., 5,6,7,8" value="5,6,7,8">
+                            <button class="btn-primary" onclick="solveStrassen()">Multiply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="output-section">
+                    <div id="dc-output" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- String Matching Section -->
+            <section id="string-matching" class="tab-content">
+                <h2>String Matching Algorithms</h2>
+
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="naive">Naive Pattern Matching</button>
+                    <button class="algo-btn" data-algo="rabin-karp">Rabin-Karp Algorithm</button>
+                    <button class="algo-btn" data-algo="kmp">KMP Algorithm</button>
+                    <button class="algo-btn" data-algo="boyer-moore">Boyer-Moore Algorithm</button>
+                </div>
+
+                <div class="input-section">
+                    <!-- Naive Pattern Matching -->
+                    <div id="naive" class="algo-input active">
+                        <h3>Naive Pattern Matching</h3>
+                        <div class="form-group">
+                            <label>Text:</label>
+                            <input type="text" id="naiveText" placeholder="e.g., ABABDABACDABABCABAB"
+                                value="ABABDABACDABABCABAB">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern:</label>
+                            <input type="text" id="naivePattern" placeholder="e.g., ABABCABAB" value="ABABCABAB">
+                            <button class="btn-primary" onclick="solveNaive()">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Rabin-Karp Algorithm -->
+                    <div id="rabin-karp" class="algo-input">
+                        <h3>Rabin-Karp Algorithm</h3>
+                        <div class="form-group">
+                            <label>Text:</label>
+                            <input type="text" id="rbText" placeholder="e.g., ABABDABACDABABCABAB"
+                                value="ABABDABACDABABCABAB">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern:</label>
+                            <input type="text" id="rbPattern" placeholder="e.g., ABABCABAB" value="ABABCABAB">
+                            <button class="btn-primary" onclick="solveRabinKarp()">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- KMP Algorithm -->
+                    <div id="kmp" class="algo-input active">
+                        <h3>KMP (Knuth-Morris-Pratt) Algorithm</h3>
+                        <div class="form-group">
+                            <label>Text:</label>
+                            <input type="text" id="kmpText" placeholder="e.g., ABABDABACDABABCABAB"
+                                value="ABABDABACDABABCABAB">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern:</label>
+                            <input type="text" id="kmpPattern" placeholder="e.g., ABABCABAB" value="ABABCABAB">
+                            <button class="btn-primary" onclick="solveKMP()">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Boyer-Moore Algorithm -->
+                    <div id="boyer-moore" class="algo-input">
+                        <h3>Boyer-Moore Algorithm</h3>
+                        <div class="form-group">
+                            <label>Text:</label>
+                            <input type="text" id="bmText" placeholder="e.g., ABABDABACDABABCABAB"
+                                value="ABABDABACDABABCABAB">
+                        </div>
+                        <div class="form-group">
+                            <label>Pattern:</label>
+                            <input type="text" id="bmPattern" placeholder="e.g., ABABCABAB" value="ABABCABAB">
+                            <button class="btn-primary" onclick="solveBoyerMoore()">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="output-section">
+                    <div id="sm-output" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Greedy Section -->
+            <section id="greedy" class="tab-content">
+                <h2>Greedy Algorithms</h2>
+
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="fractional-knapsack">Fractional Knapsack</button>
+                    <button class="algo-btn" data-algo="huffman-coding">Huffman Coding</button>
+                    <button class="algo-btn" data-algo="prims">Prim's Algorithm</button>
+                    <button class="algo-btn" data-algo="kruskal">Kruskal's Algorithm</button>
+                    <button class="algo-btn" data-algo="dijkstra">Dijkstra's Algorithm</button>
+                </div>
+
+                <div class="input-section">
+                    <!-- Fractional Knapsack -->
+                    <div id="fractional-knapsack" class="algo-input active">
+                        <h3>Fractional Knapsack</h3>
+                        <div class="form-group">
+                            <label>Capacity W (total weight):</label>
+                            <input type="number" id="knapsackCapacity" placeholder="e.g., 50" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Weights (comma-separated):</label>
+                            <input type="text" id="knapsackWeights" placeholder="e.g., 10,20,30" value="10,20,30">
+                        </div>
+                        <div class="form-group">
+                            <label>Values (comma-separated):</label>
+                            <input type="text" id="knapsackValues" placeholder="e.g., 60,100,120" value="60,100,120">
+                            <button class="btn-primary" onclick="solveFractionalKnapsack()">Calculate</button>
+                        </div>
+                    </div>
+
+                    <!-- Huffman Coding -->
+                    <div id="huffman-coding" class="algo-input">
+                        <h3>Huffman Coding</h3>
+                        <div class="form-group">
+                            <label>Input Mode:</label>
+                            <div class="mode-toggle-group">
+                                <button type="button" class="mode-toggle-btn active" id="btnModeText" onclick="setHuffmanMode('text')">🔤 Text String (Auto-count)</button>
+                                <button type="button" class="mode-toggle-btn" id="btnModeFreq" onclick="setHuffmanMode('freq')">🔢 Custom Frequencies (Manual)</button>
+                            </div>
+                            <input type="hidden" id="huffmanInputMode" value="text">
+                        </div>
+                        <div id="huffmanTextGroup" class="form-group">
+                            <label>Text to Encode:</label>
+                            <input type="text" id="huffmanTextInput" placeholder="e.g., BEEP BOOP BEER! or ABRACADABRA" value="ABRACADABRA">
+                        </div>
+                        <div id="huffmanFreqGroup" class="form-group" style="display: none;">
+                            <label>Characters & Frequencies (Format: Char:Freq, comma-separated):</label>
+                            <input type="text" id="huffmanFreqInput" placeholder="e.g., A:5, B:9, C:12, D:13, E:16, F:45" value="A:5, B:9, C:12, D:13, E:16, F:45">
+                        </div>
+                        <button class="btn-primary" onclick="solveHuffmanCoding()">Build Tree & Encode</button>
+                    </div>
+
+                    <!-- Prim's Algorithm -->
+                    <div id="prims" class="algo-input">
+                        <h3>Prim's Algorithm (Minimum Spanning Tree)</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="primsVertices" placeholder="e.g., 4" value="4"
+                                onchange="generatePrimsInput()">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows):</label>
+                            <textarea id="primsMatrix"
+                                placeholder="e.g., 0 10 15 20&#10;10 0 35 25&#10;15 35 0 30&#10;20 25 30 0" rows="4">0 10 15 20
+10 0 35 25
+15 35 0 30
+20 25 30 0</textarea>
+                            <button class="btn-primary" onclick="solvePrims()">Find MST</button>
+                        </div>
+                    </div>
+
+                    <!-- Kruskal's Algorithm -->
+                    <div id="kruskal" class="algo-input">
+                        <h3>Kruskal's Algorithm (Minimum Spanning Tree)</h3>
+                        <div class="form-group">
+                            <label>Number of edges:</label>
+                            <input type="number" id="kruskalEdges" placeholder="e.g., 5" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Edges (u,v,weight each on new line):</label>
+                            <textarea id="kruskalEdgeList"
+                                placeholder="0,1,10&#10;0,2,15&#10;1,2,35&#10;1,3,25&#10;2,3,30" rows="5">0,1,10
+0,2,15
+1,2,35
+1,3,25
+2,3,30</textarea>
+                            <button class="btn-primary" onclick="solveKruskal()">Find MST</button>
+                        </div>
+                    </div>
+
+                    <!-- Dijkstra's Algorithm -->
+                    <div id="dijkstra" class="algo-input">
+                        <h3>Dijkstra's Algorithm</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="dijkstraVertices" placeholder="e.g., 5" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows, use 'Infinity' for no direct path):</label>
+                            <textarea id="dijkstraMatrix" placeholder="e.g., 0 10 0 0 5..." rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Vertex:</label>
+                            <input type="number" id="dijkstraStart" placeholder="e.g., 0" value="0">
+                            <button class="btn-primary" onclick="solveDijkstra()">Find Shortest Paths</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <div id="greedy-output" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Dynamic Programming Section -->
+            <section id="dynamic" class="tab-content">
+                <h2>Dynamic Programming Algorithms</h2>
+
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="lcs">Longest Common Subsequence</button>
+                    <button class="algo-btn" data-algo="knapsack-01">0/1 Knapsack</button>
+                    <button class="algo-btn" data-algo="chain-mult">Chain Multiplication</button>
+                    <button class="algo-btn" data-algo="bellman-ford">Bellman-Ford Algorithm</button>
+                    <button class="algo-btn" data-algo="floyd-warshall">Floyd-Warshall Algorithm</button>
+                </div>
+
+                <div class="input-section">
+                    <!-- LCS -->
+                    <div id="lcs" class="algo-input active">
+                        <h3>Longest Common Subsequence</h3>
+                        <div class="form-group">
+                            <label>String 1:</label>
+                            <input type="text" id="lcsStr1" placeholder="e.g., AGGTAB" value="AGGTAB">
+                        </div>
+                        <div class="form-group">
+                            <label>String 2:</label>
+                            <input type="text" id="lcsStr2" placeholder="e.g., GXTXAYB" value="GXTXAYB">
+                            <button class="btn-primary" onclick="solveLCS()">Find LCS</button>
+                        </div>
+                    </div>
+
+                    <!-- 0/1 Knapsack -->
+                    <div id="knapsack-01" class="algo-input">
+                        <h3>0/1 Knapsack Problem</h3>
+                        <div class="form-group">
+                            <label>Capacity W (total weight):</label>
+                            <input type="number" id="knapsack01Capacity" placeholder="e.g., 50" value="50">
+                        </div>
+                        <div class="form-group">
+                            <label>Weights (comma-separated):</label>
+                            <input type="text" id="knapsack01Weights" placeholder="e.g., 10,20,30" value="10,20,30">
+                        </div>
+                        <div class="form-group">
+                            <label>Values (comma-separated):</label>
+                            <input type="text" id="knapsack01Values" placeholder="e.g., 60,100,120" value="60,100,120">
+                            <button class="btn-primary" onclick="solveKnapsack01()">Solve</button>
+                        </div>
+                    </div>
+
+                    <!-- Chain Multiplication -->
+                    <div id="chain-mult" class="algo-input">
+                        <h3>Matrix Chain Multiplication</h3>
+                        <div class="form-group">
+                            <label>Matrix dimensions (p array, comma-separated):</label>
+                            <input type="text" id="chainDimensions"
+                                placeholder="e.g., 10,30,5,60 for matrices 10x30, 30x5, 5x60" value="10,30,5,60">
+                            <button class="btn-primary" onclick="solveChainMultiplication()">Solve</button>
+                        </div>
+                    </div>
+
+                    <!-- Bellman-Ford Algorithm -->
+                    <div id="bellman-ford" class="algo-input">
+                        <h3>Bellman-Ford Algorithm</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="bellmanFordVertices" placeholder="e.g., 5" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Edges (u, v, weight - each on a new line):</label>
+                            <textarea id="bellmanFordEdges" placeholder="e.g., 0 1 10..." rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Vertex:</label>
+                            <input type="number" id="bellmanFordStart" placeholder="e.g., 0" value="0">
+                            <button class="btn-primary" onclick="solveBellmanFord()">Find Shortest Paths</button>
+                        </div>
+                    </div>
+
+                    <!-- Floyd-Warshall Algorithm -->
+                    <div id="floyd-warshall" class="algo-input">
+                        <h3>Floyd-Warshall Algorithm</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="floydWarshallVertices" placeholder="e.g., 4" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows, use 'Infinity' for no direct path):</label>
+                            <textarea id="floydWarshallMatrix" placeholder="e.g., 0 5 Infinity 10..."
+                                rows="4"></textarea>
+                            <button class="btn-primary" onclick="solveFloydWarshall()">Find All-Pairs Shortest
+                                Paths</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <div id="dynamic-output" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Backtracking Section -->
+            <section id="backtracking" class="tab-content">
+                <h2>Backtracking Algorithms</h2>
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="n-queens">N-Queens</button>
+                    <button class="algo-btn" data-algo="sum-of-subsets">Sum of Subsets</button>
+                    <button class="algo-btn" data-algo="graph-coloring">Graph Coloring</button>
+                    <button class="algo-btn" data-algo="hamiltonian-cycle">Hamiltonian Cycle</button>
+                    <button class="algo-btn" data-algo="tsp-backtracking">Travelling Salesman (Backtracking)</button>
+                </div>
+                <div class="input-section">
+                    <!-- N-Queens -->
+                    <div id="n-queens" class="algo-input">
+                        <h3>N Queens Problem</h3>
+                        <div class="form-group">
+                            <label>Enter N (board size):</label>
+                            <input type="number" id="nQueensN" placeholder="e.g., 4" value="4" min="1" max="12">
+                            <button class="btn-primary" onclick="solveNQueens()">Solve</button>
+                        </div>
+                    </div>
+
+                    <!-- Sum of Subsets -->
+                    <div id="sum-of-subsets" class="algo-input">
+                        <h3>Sum of Subsets</h3>
+                        <div class="form-group">
+                            <label>Set of numbers:</label>
+                            <input type="text" id="sumOfSubsets" placeholder="e.g., 1,2,3,4" value="1,2,3,4">
+                        </div>
+                        <div class="form-group">
+                            <label>Target sum:</label>
+                            <input type="number" id="sumOfSubsetsTarget" placeholder="e.g., 5" value="5">
+                            <button class="btn-primary" onclick="solveSumOfSubsets()">Find</button>
+                        </div>
+                    </div>
+
+                    <!-- Graph Coloring -->
+                    <div id="graph-coloring" class="algo-input">
+                        <h3>Graph Coloring</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="graphColoringVertices" placeholder="e.g., 4" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows):</label>
+                            <textarea id="graphColoringMatrix" placeholder="e.g., 0 1 1 1..." rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of colors:</label>
+                            <input type="number" id="graphColoringColors" placeholder="e.g., 3" value="3">
+                            <button class="btn-primary" onclick="solveGraphColoring()">Solve</button>
+                        </div>
+                    </div>
+
+                    <!-- Hamiltonian Cycle -->
+                    <div id="hamiltonian-cycle" class="algo-input">
+                        <h3>Hamiltonian Cycle</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="hamiltonianCycleVertices" placeholder="e.g., 4" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows):</label>
+                            <textarea id="hamiltonianCycleMatrix" placeholder="e.g., 0 1 0 1..." rows="4"></textarea>
+                            <button class="btn-primary" onclick="solveHamiltonianCycle()">Solve</button>
+                        </div>
+                    </div>
+
+                    <!-- Travelling Salesman (Backtracking) -->
+                    <div id="tsp-backtracking" class="algo-input">
+                        <h3>Travelling Salesman Problem (Backtracking)</h3>
+                        <div class="form-group">
+                            <label>Number of cities:</label>
+                            <input type="number" id="tspBacktrackingCities" placeholder="e.g., 4" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows):</label>
+                            <textarea id="tspBacktrackingMatrix" placeholder="e.g., 0 10 15 20..." rows="4"></textarea>
+                            <button class="btn-primary" onclick="solveTspBacktracking()">Find Path</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="output-section">
+                    <div id="backtracking-output" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Branch & Bound Section -->
+            <section id="branch-bound" class="tab-content">
+                <h2>Branch & Bound Algorithms</h2>
+                <div class="algo-selector">
+                    <button class="algo-btn active" data-algo="tsp-branch-bound">Travelling Salesman (Branch &
+                        Bound)</button>
+                    <button class="algo-btn" data-algo="ford-fulkerson">Ford-Fulkerson</button>
+                </div>
+                <div class="input-section">
+                    <!-- Travelling Salesman (Branch & Bound) -->
+                    <div id="tsp-branch-bound" class="algo-input active">
+                        <h3>Travelling Salesman Problem (Branch & Bound)</h3>
+                        <div class="form-group">
+                            <label>Number of cities:</label>
+                            <input type="number" id="tspBranchBoundCities" placeholder="e.g., 4" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label>Adjacency Matrix (space-separated rows):</label>
+                            <textarea id="tspBranchBoundMatrix" placeholder="e.g., 0 10 15 20..." rows="4"></textarea>
+                            <button class="btn-primary" onclick="solveTspBranchBound()">Find Path</button>
+                        </div>
+                    </div>
+                    <!-- Ford-Fulkerson -->
+                    <div id="ford-fulkerson" class="algo-input">
+                        <h3>Ford-Fulkerson Algorithm</h3>
+                        <div class="form-group">
+                            <label>Number of vertices:</label>
+                            <input type="number" id="fordFulkersonVertices" placeholder="e.g., 6" value="6">
+                        </div>
+                        <div class="form-group">
+                            <label>Capacity Graph (Adjacency Matrix, space-separated):</label>
+                            <textarea id="fordFulkersonMatrix" rows="6" placeholder="e.g., 0 16 13 0 0 0..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Source:</label>
+                            <input type="number" id="fordFulkersonSource" placeholder="e.g., 0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Sink:</label>
+                            <input type="number" id="fordFulkersonSink" placeholder="e.g., 5" value="5">
+                            <button class="btn-primary" onclick="solveFordFulkerson()">Find Max Flow</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="output-section">
+                    <div id="branch-bound-output" class="output-box"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="complexity.js"></script>
+    <script src="divide_conquer.js"></script>
+    <script src="greedy.js"></script>
+    <script src="dynamic.js"></script>
+    <script src="backtracking.js"></script>
+    <script src="branch_bound.js"></script>
+    <script src="ui.js"></script>
+</body>
+
+</html>
