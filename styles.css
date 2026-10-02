@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light dark;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1,
+h2 {
+  margin-bottom: 8px;
+}
+
+.controls,
+.details,
+.visualization {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+select,
+button {
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 8px 10px;
+}
+
+.buttons {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#stepDescription {
+  min-height: 36px;
+}
+
+.state-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  min-width: 40px;
+  text-align: center;
+}
+
+.item.active {
+  border-color: #38bdf8;
+  background: #082f49;
+}
+
+.item.done {
+  border-color: #34d399;
+  background: #052e16;
+}
+
+.meta {
+  display: grid;
+  gap: 6px;
+}
+
+.meta strong {
+  color: #93c5fd;
+}

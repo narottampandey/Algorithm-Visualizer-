@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Algorithm Visualizer</h1>
+        <p>
+          Explore how algorithms work step by step, and learn their category,
+          time complexity, and use-cases.
+        </p>
+      </header>
+
+      <section class="controls">
+        <label for="algorithm">Choose an algorithm:</label>
+        <select id="algorithm"></select>
+        <div class="buttons">
+          <button id="reset" type="button">Reset</button>
+          <button id="prev" type="button">Previous</button>
+          <button id="next" type="button">Next</button>
+          <button id="play" type="button">Play</button>
+        </div>
+      </section>
+
+      <section class="details" id="details"></section>
+
+      <section class="visualization">
+        <h2>Step <span id="stepCounter">0 / 0</span></h2>
+        <p id="stepDescription"></p>
+        <div id="stateView" class="state-view"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
